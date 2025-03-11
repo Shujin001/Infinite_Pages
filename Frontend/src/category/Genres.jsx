@@ -25,7 +25,7 @@ const Genres = () => {
             "Sci-Fi": "#3498DB",
             "Romance": "#E91E63",
             "Horror": "#2C3E50",
-            "Historical Fiction": "#D4AC0D",
+            "Historical ": "#D4AC0D",
             "Thriller": "#C0392B",
             "Self-Help": "#27AE60",
             "Biography": "#F39C12",

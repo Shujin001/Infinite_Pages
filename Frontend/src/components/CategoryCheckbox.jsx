@@ -28,7 +28,7 @@ const genreCheckbox = ({handleFilter}) => {
             newSelected.splice(genreExists, 1)
         }
         else{
-            newSelected.push(newgenre)
+            newSelected.push(newGenre)
         }
         setSelected(newSelected)
         handleFilter("genre", newSelected)
