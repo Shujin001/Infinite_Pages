@@ -1,24 +1,34 @@
-import { Grid2 } from '@mui/material';
-import React, { useEffect, useState } from 'react'
-import MyCard from '../components/MyCard';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getAllBooksByGenre } from '../api/bookApi';
+import { Grid2 } from '@mui/material';
+import MyCard from '../components/MyCard';
 
 const Book = () => {
-    let [books, setBooks] = useState([])
+    const { id } = useParams();
+    const [books, setBooks] = useState([]);
+
     useEffect(() => {
-        getAllBooksByGenre()
+        getAllBooksByGenre(id)
             .then(data => {
                 if (data.error) {
-                    console.log(data.error)
+                    console.log(data.error);
+                } else {
+                    setBooks(data);
+                }
+            });
+    }, [id]);
 
-                }
-                else {
-                    setBooks(data)
-                }
-            })
-    }, [])
     return (
         <>
+            {/* <div>
+                <h1>Books in this Genre</h1>
+                <ul>
+                    {books.map(book => (
+                        <li key={book._id}>{book.book_name}</li>
+                    ))}
+                </ul>
+            </div> */}
             <Grid2 item size={{ xs: 12, m: 8, lg: 9 }} bgcolor={"#cccccc"} container>
                 {books.map((book) => {
                     return (
@@ -33,7 +43,7 @@ const Book = () => {
                 })}
             </Grid2>
         </>
-    )
-}
+    );
+};
 
-export default Book
+export default Book;

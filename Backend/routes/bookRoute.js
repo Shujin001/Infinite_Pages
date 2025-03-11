@@ -9,7 +9,7 @@ router.post('/addbook',isAdmin,upload.single('book_image'), bookRules, validatio
 router.get('/getallbooks', getAllBooks)
 router.post('/getallbooks', getAllBooks)
 router.get('/getbookdetails/:id', getBookDetails)
-router.get('/getbooksbycategory/:genre_id', getAllBooksByGenre)
+router.get('/getallbooksbygenre/:genre_id', getAllBooksByGenre)
 router.put('/updatebook/:id',isAdmin, upload.single('update_image'),bookRules, validationMethod, updateBook)
 router.delete('/deletebook/:id',isAdmin, deleteBook)
 

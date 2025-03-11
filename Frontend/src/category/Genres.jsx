@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getAllGenres } from '../api/genreApi';
+import { getAllBooksByGenre } from '../api/bookApi';
 
 const Genres = () => {
 
     let [genres, setGenres] = useState([])
-    const { genreName } = useParams();
+    let [genre, setGenre] = useState('')
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const navigate = useNavigate(); 
@@ -34,12 +35,25 @@ const Genres = () => {
     };
 
     useEffect(() => {
+        if(genre.length == 0){
         getAllGenres()
             .then(data => {
-                setGenres(data)
+                if(data.error){
+                    console.log(data.error)
+                }else{
+                    setGenres(data)
+                }
             })
-            .catch(error => console.log(error))
-    }, [genreName])
+        }
+        getAllBooksByGenre(genre)
+        .then(data=>{
+            if(data.error){
+                console.log(data.error)
+            }else{
+                setBooks(data)
+            }
+        })
+    }, [genre])
     return (
         <>
         <div className="flex flex-col items-center justify-center h-screen"  style={{ backgroundImage: "url('/Genre.jpeg')", width:'100vw', height:'100vh' }}>

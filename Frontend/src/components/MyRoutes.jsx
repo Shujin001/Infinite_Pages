@@ -28,6 +28,7 @@ import First from './First'
 import Books from '../Pages/Admin/Books'
 import Book from '../product/Book'
 import Genres from '../category/Genres'
+import CheckoutPage from '../Pages/Admin/CheckoutPage'
 const MyRoutes = () => {
     return (
         <BrowserRouter>
@@ -50,14 +51,16 @@ const MyRoutes = () => {
                     <Route path='/resetpassword/:token' element={<ResetPassword />} />
                     <Route path='/verify/:token' element={<VerifyAccount />} />
                     <Route path='/products' element={<Books/>}/>
-                    {/* <Route path='product/:id' element={<BookDetails/>}/> */}
-                    <Route path='/:genreName/:id'  element={<Book/>}/>
+                    <Route path='/:genreName/:id' element={<Book/>}/>
                     <Route path='book/:id' element={<BookDetails/>}/>
+                    {/* <Route path='/:genreName/:id'  element={<Book/>}/> */}
+                    {/* <Route path='book/:id' element={<BookDetails/>}/> */}
 
                 </Route>
                 <Route path='/cart' element= {<Cart/>}/>
+                <Route path='/checkout' element= {<CheckoutPage/>}/>
                 
-                {/* <Route path='/' element={<AdminRoutes />}> */}
+                <Route path='/' element={<AdminRoutes />}>
                     <Route path='/admin' element={<AdminLayout/>}>
                         <Route path='dashboard' element={<AdminDashboard />} />
                         <Route path='genre' element={<Genre />} />
@@ -67,7 +70,7 @@ const MyRoutes = () => {
                         <Route path='book/new' element={<AddBook />} />
                         <Route path='books/:id' element={<EditBook />} />
                     </Route>
-                {/* </Route> */}
+                </Route>
                 <Route path='/reduxcounter' element={<Counter2/>}/>
                 <Route path='/game' element={<Games/>}/>
 

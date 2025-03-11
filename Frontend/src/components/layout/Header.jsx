@@ -48,6 +48,12 @@ const Header = () => {
                                     <Link to={'/admin/dashboard'}>
                                         <i className='bi bi-speedometer2'></i>
                                     </Link>
+                                    <Link to={'/genres'}>
+                                        <i className='bi bi-journal-richtext'></i>                                    
+                                    </Link>
+                                    <Link to={'/cart'}>
+                                        <i className='bi bi-cart'></i>
+                                    </Link>
                                 </>
                                 :
                                 <>

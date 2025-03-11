@@ -50,7 +50,7 @@ export const deleteBook = (id, token) => {
         .catch(error => console.log(error))
 }
 export const getAllBooksByGenre = (id) => {
-    return fetch(`${API}/getallbooksbygenre/genre_${id}`)
+    return fetch(`${API}/getallbooksbygenre/${id}`)
         .then(response => response.json())
         .catch(error => console.log(error))
 }
