@@ -49,8 +49,8 @@ const Genre = () => {
 
     return (
         <>
-            <div className='p-5'>
-                <h1 className='h3'>Genres</h1>
+            <div className='p-5 text-white'>
+                <h2 className='h3'>Genres</h2>
                 <ol>
                     {
                         genres.map((genre, i) => {

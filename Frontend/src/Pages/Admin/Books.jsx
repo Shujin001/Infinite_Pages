@@ -36,7 +36,7 @@ const Books = () => {
 
                     <PricesRadio handleFilter={handleFilter} />
                 </Grid2>
-                <Grid2 item size={{ xs: 12, m: 8, lg: 9 }} bgcolor={"#cccccc"} container>
+                <Grid2 item size={{ xs: 12, m: 8, lg: 9 }} bgcolor={"#cccccc"} color={'white'} container>
                     {books.map((book) => {
                         return (
                             <Grid2 item size={{ xs: 12, md: 6, lg: 4 }} p={3} key={book._id}>

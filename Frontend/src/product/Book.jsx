@@ -29,7 +29,7 @@ const Book = () => {
                     ))}
                 </ul>
             </div> */}
-            <Grid2 item size={{ xs: 12, m: 8, lg: 9 }} bgcolor={"#cccccc"} container>
+            <Grid2 item size={{ xs: 12, m: 8, lg: 9 }} bgcolor={"#292c31"} container paddingBlock='10%'>
                 {books.map((book) => {
                     return (
                         <Grid2 item size={{ xs: 12, md: 6, lg: 4 }} p={3} key={book._id}>

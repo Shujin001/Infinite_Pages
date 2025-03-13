@@ -29,6 +29,7 @@ import Books from '../Pages/Admin/Books'
 import Book from '../product/Book'
 import Genres from '../category/Genres'
 import CheckoutPage from '../Pages/Admin/CheckoutPage'
+import SubscriptionForm from './SubscriptionForm'
 const MyRoutes = () => {
     return (
         <BrowserRouter>
@@ -53,6 +54,8 @@ const MyRoutes = () => {
                     <Route path='/products' element={<Books/>}/>
                     <Route path='/:genreName/:id' element={<Book/>}/>
                     <Route path='book/:id' element={<BookDetails/>}/>
+                    <Route path='/subscription' element={<SubscriptionForm />} />
+
                     {/* <Route path='/:genreName/:id'  element={<Book/>}/> */}
                     {/* <Route path='book/:id' element={<BookDetails/>}/> */}
 

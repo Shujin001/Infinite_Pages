@@ -1,24 +1,30 @@
-import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { authenticate, login } from '../api/userApi'
-import { MyThemeContext } from '../App'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authenticate, login } from "../api/userApi";
+import Swal from "sweetalert2";
 
 const Login = () => {
   let [user, setUser] = useState({})
   const navigate = useNavigate()
 
-  let theme = useContext(MyThemeContext)
+  // let theme = useContext(MyThemeContext)
 
   const handleChange = e => {
-    setUser({...user, [e.target.name]: e.target.value})
+    setUser({ ...user, [e.target.name]: e.target.value })
   }
 
+  const handleRegister = () => {
+    navigate('/register')
+  }
+  const handleForgot = () => {
+    navigate('/forgetpassword')
+  }
   const handleSubmit = e => {
     e.preventDefault()
     login(user)
     .then(data=>{
       if(data.error){
-        alert(data.error)
+        Swal.fire("Attention!!!","Email not Registered","warning")
       }
       else{
         authenticate(data)
@@ -32,39 +38,61 @@ const Login = () => {
     })
   }
 
+
   return (
     <>
-        <main className={`${theme==='dark'?'dark-':''}mybg
-          form-signin w-11/12 sm:w-10/12  md:w-8/12 lg:w-1/2 m-auto p-5 shadow-xl my-5`}>
-  <form>
-    <img className="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"/>
-    <h1 className="h3 mb-3 fw-normal text-xl md:text-5xl">Please sign in</h1>
+      
+      <div className='loginmain bg-black'>
 
-    <div className="form-floating">
-      <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" onChange={handleChange} name={'email'}/>
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div className="form-floating py-1">
-      <input type="password" className="form-control" id="floatingPassword" placeholder="Password" onChange={handleChange} name="password"/>
-      <label for="floatingPassword">Password</label>
-    </div>
+        <div className="login">
+          <h2 className="form-title">{"Log in with"}</h2>
 
-    <div className="form-check text-start my-3">
-      <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault"/>
-      <label className="form-check-label" for="flexCheckDefault">
-        Remember me
-      </label>
-    </div>
-    <button className="btn btn-primary w-100 py-2" type="submit" onClick={handleSubmit}>Sign in</button>
-    <div className="case2 py-2 flex justify-between">
-    <Link  to={'/forgetpassword'} className="underline">Forgot Password?</Link>
-    <Link  to={'/register'} className="underline">Register</Link> 
-    </div>
-    <p className="mt-5 mb-3 text-body-secondary">&copy; 2017-2024</p>
-  </form>
-</main>
+          {(
+            <>
+              <div className="social-login">
+                <button className="social-button" onClick={() => handleSocialLogin("google")}>
+                  <img src="Google.png" alt="Google" className="social-icon" />
+                  Google
+                </button>
+                <button className="social-button" onClick={() => handleSocialLogin("apple")}>
+                  <img src="Apple.webp" alt="Apple" className="social-icon" />
+                  Apple
+                </button>
+              </div>
+              <p className="separator"><span>or</span></p>
+            </>
+          )}
+
+          <form className="login-form">
+            <div className="input-wrapper">
+              <input type="email" placeholder="Email address" className="input-field" required onChange={handleChange} name={'email'}/>
+              <i className="bi bi-envelope"></i>
+            </div>
+
+            <div className="input-wrapper">
+              <input type="password" placeholder="Password" className="input-field" required onChange={handleChange} name="password"/>
+              <i className="bi bi-lock"></i>
+            </div>
+
+            <a className="forgot-pass-link" onClick={() => handleForgot()}>Forgot Password?</a>
+
+            <button className="login-button" onClick={handleSubmit}>Login</button>
+          </form>
+
+          <p className="register-text">
+            {"Don't have an account? "}
+            <a className="register-link" onClick={() => handleRegister()}>
+              {" Register now"}
+            </a>
+          </p>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
+
+const handleSocialLogin = (provider) => {
+  console.log(`Logging in with ${provider}`);
+};
 
 export default Login

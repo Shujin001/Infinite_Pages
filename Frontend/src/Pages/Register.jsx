@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import { register } from '../api/userApi'
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     let [user, setUser] = useState({})
+    const navigate = useNavigate()
 
 const handleChange = e => {
     setUser({...user, [e.target.name]: e.target.value})
 }
+const handleLogin = () => {
+    navigate('/login')
+  }
 const handleSubmit = e =>{
     e.preventDefault()
     //console.log(user)
     register(user)
     .then(data =>{
         if (data.error){
-            alert(data.error)
+          Swal.fire("Hey","All Fields are Required","info")
         }
         else{
             alert(data.message)
@@ -22,19 +28,58 @@ const handleSubmit = e =>{
 }
     return (
         <>
-            <form className='w-1/2 p-5 my-5 border border-gray-500 rounded-3xl mx-auto'>
-            <h3 className='text-3xl text-center underline font-bold'>Register</h3>
-                <label htmlFor="username">Username</label>
-                <input type="text" id='username' className='w-full text-blue-700 px-5 py-2 border border-blue-900 focus:bg-gray-100' name='username' onChange={handleChange} />
-                <label htmlFor="email">Email</label>
-                <input type="text" id='email' className='w-full text-blue-700 px-5 py-2 border border-blue-900 focus:bg-gray-100' name='email' onChange={handleChange}/>
-                <label htmlFor="password">Password</label>
-                <input type="text" id='password' className='w-full text-blue-700 px-5 py-2 border border-blue-900 focus:bg-gray-100' name='password' onChange={handleChange}/>
+    
+    <div className='loginmain'>
 
-                <button className='bg-blue-900 hover:bg-blue-500 active:bg-blue-300 text-white active:text-blue-900 px-4 py-2 w-full mt-2 rounded-md'onClick={handleSubmit}>Register</button>
-            </form>
+    <div className="login">
+      <h2 className="form-title">{"Log in with"}</h2>
+
+      { (
+        <>
+          <div className="social-login">
+            <button className="social-button" onClick={() => handleSocialLogin("google")}>
+              <img src="Google.png" alt="Google" className="social-icon" />
+              Google
+            </button>
+            <button className="social-button" onClick={() => handleSocialLogin("apple")}>
+              <img src="Apple.webp" alt="Apple" className="social-icon" />
+              Apple
+            </button>
+          </div>
+          <p className="separator"><span>or</span></p>
         </>
-    )
-}
+      )}
+
+      <form className="login-form">
+        {(
+          <div className="input-wrapper">
+            <input type="text" placeholder="Username" className="input-field" required />
+            <i className="bi bi-person"></i>
+          </div>
+        )}
+
+        <div className="input-wrapper">
+          <input type="email" placeholder="Email address" className="input-field" required onChange={handleChange} />
+          <i className="bi bi-envelope"></i>
+        </div>
+
+        <div className="input-wrapper">
+          <input type="password" placeholder="Password" className="input-field" required onChange={handleChange}/>
+          <i className="bi bi-lock"></i>
+        </div>
+        <button className="login-button" onClick={handleSubmit}>Register</button>
+      </form>
+
+      <p className="register-text">
+        {"Already have an account? "}  
+        <a className="register-link" onClick={() => handleLogin()}>
+          {" Login"}
+        </a>
+      </p>
+    </div>
+    </div>
+    </>
+  );
+};
 
 export default Register

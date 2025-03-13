@@ -1,16 +1,23 @@
 const API = `http://localhost:5000`
 
-export const register = (user) =>{
-    return fetch (`${API}/register`,{
+export const register = (user) => {
+    console.log("User Data Before Sending:", user);  // Debugging
+
+    return fetch(`${API}/register`, {
         method: "POST",
-        headers:{
-            "Content-Type":"application/json"
+        headers: {
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(user)
     })
     .then(response => response.json())
-    .catch(error => console.log(error))
-}
+    .then(data => {
+        console.log("Server Response:", data);  // Debugging
+        return data;
+    })
+    .catch(error => console.error("Registration Error:", error));
+};
+
 
 export const verifyAccount = token => {
     return fetch (`${API}/verify/${token}`)

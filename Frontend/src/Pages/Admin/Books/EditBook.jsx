@@ -63,7 +63,7 @@ const EditBook = () => {
                 else {
                     Swal.fire({
                         title: "Congrats",
-                        text: "Book added successfully.",
+                        text: "Book updated successfully.",
                         icon: "success",
                         timer: 3000,
                         timeProgressBar: true
@@ -107,7 +107,7 @@ const EditBook = () => {
 
                 <label>Image:</label>
                 <img src={`${API}/${book_image}`}></img>
-                <input type="file" className='w-full text-blue-700 px-5 py-2 border border-blue-900 focus:bg-gray-100' name="book_image" accept="image/*" required onChange={handleFileChange} /><br />
+                <input type="file" className='w-full text-white px-5 py-2 border border-blue-900 focus:bg-gray-100' name="book_image" accept="image/*" required onChange={handleFileChange} /><br />
                 <div className='flex'>
                     <button className="btn btn-danger w-50 mt-2 p-2" onClick={handleSubmit}>Update Book</button>
                     <Link to={'/admin/books'} className="btn btn-warning w-50 flex mt-2 p-2">Go Back</Link>

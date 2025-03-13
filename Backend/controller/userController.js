@@ -7,27 +7,44 @@ const jwt = require('jsonwebtoken')
 
 // register
 exports.signUp = async (req, res) => {
-    // check if username is available or not
-    let userToAdd = await UserModel.findOne({ username: req.body.username })
-    if (userToAdd) {
-        return res.status(400).json({ error: "Username not available" })
+    try {
+        const { username, email, password } = req.body;
+
+        // Debugging
+        console.log("Received Data:", req.body);
+
+        // Check if all fields are provided
+        if (!username || !email || !password) {
+            return res.status(400).json({ error: "All fields are required" });
+        }
+
+        // Check username availability
+        let userToAdd = await UserModel.findOne({ username });
+        if (userToAdd) {
+            return res.status(400).json({ error: "Username not available" });
+        }
+
+        // Check if email is registered
+        userToAdd = await UserModel.findOne({ email });
+        if (userToAdd) {
+            return res.status(400).json({ error: "Email already registered. Choose another" });
+        }
+
+        // Encrypt password
+        const hashed_password = await bcrypt.hash(password, 10);
+        console.log("Hashed Password:", hashed_password);
+
+        // Add user to database
+        userToAdd = await UserModel.create({ username, email, password: hashed_password });
+
+        res.status(201).json({ message: "User registered successfully!" });
+
+    } catch (error) {
+        console.error("Signup error:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
 
-    // check if email is already registered or not
-    userToAdd = await UserModel.findOne({ email: req.body.email })
-    if (userToAdd) {
-        return res.status(400).json({ error: "Email already registered. Choose another" })
-    }
 
-    // encrypt password
-    let hashed_password = await bcrypt.hash(req.body.password, 10)
-
-    // add user in database
-    userToAdd = await UserModel.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: hashed_password
-    })
 
     // generate verification token and send in email
     let tokenObj = await TokenModel.create({

@@ -47,3 +47,535 @@ thead{
 .dark-mybg{
     @apply bg-slate-700 text-white;
 }
+.home a {
+    padding: 15px 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.home a:hover {
+    background-color: aqua;
+    color: #050801;
+    box-shadow: 0 0 5px aqua,
+        0 0 25px aqua,
+        0 0 50px aqua,
+        0 0 200px aqua;
+    -webkit-box-reflect: below 2.5px linear-gradient(transparent, transparent, rgba(3, 3, 3, 0.4));
+    filter: hue-rotate(225deg);
+}
+
+table,
+tr {
+    border: 0px solid gray;
+}
+
+thead {
+    background-color: rgba(115, 107, 107, 0.15);
+    color: black;
+    font-weight: bold;
+}
+
+.navbar {
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+}
+
+
+.loginmain {
+    background: lightcyan;
+    height: 100vh;
+    align-content: center;
+}
+
+.back {
+    position: absolute;
+    margin: 20px;
+    color: #4320df;
+}
+
+.back i {
+    font-size: 30px;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+.login {
+    max-width: 410px;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login .form-title {
+    text-align: center;
+    font-size: 1.37rem;
+    font-weight: 600;
+    margin-bottom: 1.87rem;
+}
+
+
+.login .social-login {
+    display: flex;
+    gap: 1.31rem;
+
+}
+
+
+.social-login .social-button {
+    display: flex;
+    width: 100%;
+    gap: 0.81rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 0;
+    align-items: center;
+    border-radius: 0.31rem;
+    justify-content: center;
+    background: #f9f8ff;
+    border: 1px solid #D5CBFF;
+    transition: 0.3s ease;
+}
+
+.social-login .social-button:hover {
+    background: #f9f8ff;
+    border-color: #5f41e4;
+}
+
+
+.social-login .social-button .social-icon {
+    width: 23px;
+}
+
+.login .separator {
+    margin: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.login .separator span {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    padding: 0 0.9rem;
+    font-size: 1.06rem;
+    font-weight: 500;
+}
+
+.login .separator::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: #bfb3f2;
+}
+
+.login-form .input-wrapper {
+    height: 54px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.login-form .input-wrapper .input-field {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 1.06rem;
+    border-radius: 0.31rem;
+    border: 1px solid#bfb3f2;
+    padding: 0 1.25rem 0 3.12rem;
+    transition: 0.2s ease;
+
+}
+
+.login-form .input-wrapper .input-field:focus {
+    border-color: #5f41e4;
+}
+
+.login-form .input-wrapper .input-field::placeholder {
+    color: #a395e0;
+
+
+}
+
+.login-form .input-wrapper i {
+    color: #a395e0;
+    position: absolute;
+    top: 50%;
+    left: 0.9rem;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+}
+
+.login-form .input-wrapper .input-field:focus~i {
+    color: #5f41e4;
+}
+
+.login-form .forgot-pass-link {
+    display: block;
+    margin-top: -0.46rem;
+    width: fit-content;
+}
+
+.login-form .login-button {
+    width: 100%;
+    height: 54px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.125rem;
+    background: #5f41e4;
+    margin-top: 2.19rem;
+    border-radius: 3.1rem;
+    transition: 0.2s ease;
+
+}
+
+.login-form .login-button:hover {
+    background: #4320df;
+
+}
+
+.login .signup-text {
+    text-align: center;
+    font-weight: 500;
+    margin: 1.7rem 0 0.31rem;
+}
+
+.login a {
+    color: #5f41e4;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+
+.register-text {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.register-link {
+    color: #6a5acd;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.social-button:hover {
+    background: #f1f1f1;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    padding-left: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.material-symbols-rounded {
+    position: absolute;
+    left: 10px;
+    color: gray;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background: #6a5acd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background: #5a4bbd;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+}
+
+.genre {
+    width: 23%;
+    border-radius: 16px;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.genre :hover {
+    opacity: 0.5;
+}
+
+section {
+    height: 100vh;
+    width: 100%;
+}
+
+.scroll-down {
+    margin-left: 46%;
+    height: 50px;
+    width: 35px;
+    border: 2px solid black;
+    position: -webkit-sticky;
+    left: 49%;
+    bottom: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.scroll-down:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.scroll-down::before {
+    content: '';
+    position: absolute;
+    top: 58%;
+    left: 49.7%;
+    border: 2px solid black;
+    height: 10px;
+    width: 10px;
+    transform: translate(00%, 00%) rotate(45deg);
+    border-top: transparent;
+    border-left: transparent;
+    /* animation: scroll-down 1s infinite; */
+}
+
+.scroll-down::after {
+    top: 30%;
+    animation-delay: 1.3s;
+}
+
+@keyframes scroll-down {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        top: 90%;
+    }
+}
+
+h1 {
+    background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* pointer-events: none; */
+}
+
+.welcome h3 {
+    animation: fade 8s ease-in-out;
+}
+
+.welcome div {
+    animation: fade 10s ease-in-out;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.typewriter {
+    display: inline-block;
+}
+
+.typewriter h2 {
+    color: #4b4a4a;
+    font-family: monospace;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .1em;
+    animation:
+        typing 3s steps(30, end),
+        blink-caret 1s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange
+    }
+}
+#sec-2 {
+    background-color: #525862;
+    color: white;
+}
+
+
+#sec-3 {
+    background-color: #525862;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container1{
+    width: 90%;
+    height: 40%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: gallery 20s linear infinite;
+    cursor: pointer;
+}
+ 
+@keyframes gallery {
+    0% {
+        transform: perspective(1600px) rotateY(0deg);
+    }
+
+    100% {
+        transform: perspective(1600px) rotateY(360deg);
+    }
+}
+
+.container1 span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i)*45deg));
+    -webkit-box-reflect: below 2.5px linear-gradient(transparent, transparent, rgba(3, 3, 3, 0.4));
+}
+
+.container1 span img {
+    height: 320px;
+    position: absolute;
+    border-radius: 10px;
+    border: 4px ridge #ccc;
+    width: 180px;
+}
+
+
+#sec-4 {
+    background-color: #525862;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+    height:100vh;
+}
+
+.flip-card {
+    width: 250px;
+    height: 300px;
+    border: none;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    text-align: center;
+    transition: transform 1.2s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+} 
